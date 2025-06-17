@@ -1,17 +1,33 @@
 import express, { Express, Request, Response } from 'express';
 import swaggerUi from 'swagger-ui-express';
-import { specs } from './swagger';
+import yaml from 'yamljs';
 
+// Routes
+import clientsRouter from './routes/client.route';
+import productsRouter from './routes/product.route';
+import ordersRouter from './routes/order.route';
 
 const app: Express = express();
-const PORT: number = 3200;
+const PORT = 3200;
 
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(specs));
+// Serve static files
+app.use(express.static("public"));
 
-app.get('/', (req: Request, resp: Response) => {
-    resp.redirect('/swagger');
+// Serve API docs
+const openapiSpec = yaml.load('./openapi.yaml');
+app.use('/swagger', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+
+// Attach routers
+app.use('/clients', clientsRouter);
+app.use('/products', productsRouter);
+app.use('/orders', ordersRouter);
+
+// Redirect root to swagger
+app.get("/", (req: Request, res: Response) => {
+    res.redirect('/swagger');
 });
 
-app.listen(3200, (e: any)=> {
-    console.log(`Server is running at port ${PORT}`);
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server is running at http://localhost:${PORT}`);
 });

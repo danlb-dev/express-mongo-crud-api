@@ -1,0 +1,313 @@
+openapi: 3.0.0
+info:
+  title: express-crud-api-demo
+  version: 1.0.0
+  description: A study project demonstrating the use of Node.js, Express, and TypeScript to build a RESTful API
+
+servers:
+  - url: http://localhost:3200/
+
+tags:
+  - name: Clients
+  - name: Products
+  - name: Orders
+
+paths:
+  /clients:
+    get:
+      summary: Retrieve a list of clients
+      tags: [Clients]
+      responses:
+        200:
+          description: A list of clients
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Client"
+
+    post:
+      summary: Create a new client
+      tags: [Clients]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+      responses:
+        201:
+          description: Client successfully created
+
+  /clients/{clientId}:
+    get:
+      summary: Retrieve a client by its ID
+      tags: [Clients]
+      parameters:
+        - $ref: "#/components/parameters/ClientId"
+      responses:
+        200:
+          description: Client details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Client"
+
+    put:
+      summary: Update a client by its ID
+      tags: [Clients]
+      parameters:
+        - $ref: "#/components/parameters/ClientId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Client"
+      responses:
+        200:
+          description: Client updated successfully
+
+    delete:
+      summary: Delete a client by its ID
+      tags: [Clients]
+      parameters:
+        - $ref: "#/components/parameters/ClientId"
+      responses:
+        204:
+          description: Client successfully deleted
+
+  /products:
+    get:
+      summary: Retrieve a list of products
+      tags: [Products]
+      responses:
+        200:
+          description: A list of products
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Product"
+    post:
+      summary: Create a new product
+      tags: [Products]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        201:
+          description: Product successfully created
+
+  /products/{productId}:
+    get:
+      summary: Get product by ID
+      tags: [Products]
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      responses:
+        200:
+          description: Product details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Product"
+    put:
+      summary: Update product by ID
+      tags: [Products]
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Product"
+      responses:
+        200:
+          description: Product updated
+    delete:
+      summary: Delete product by ID
+      tags: [Products]
+      parameters:
+        - $ref: "#/components/parameters/ProductId"
+      responses:
+        204:
+          description: Product deleted
+
+  /order:
+    get:
+      summary: Retrieve a list of orders
+      tags: [Orders]
+      responses:
+        200:
+          description: A list of orders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Order"
+    post:
+      summary: Create a new order
+      tags: [Orders]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+      responses:
+        201:
+          description: Order created
+
+  /order/{orderId}:
+    get:
+      summary: Get order by ID
+      tags: [Orders]
+      parameters:
+        - $ref: "#/components/parameters/OrderId"
+      responses:
+        200:
+          description: Order details
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Order"
+    put:
+      summary: Update order by ID
+      tags: [Orders]
+      parameters:
+        - $ref: "#/components/parameters/OrderId"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Order"
+      responses:
+        200:
+          description: Order updated
+    delete:
+      summary: Delete order by ID
+      tags: [Orders]
+      parameters:
+        - $ref: "#/components/parameters/OrderId"
+      responses:
+        204:
+          description: Order deleted
+
+components:
+  parameters:
+    ClientId:
+      name: clientId
+      in: path
+      required: true
+      description: The ID of the client
+      schema:
+        type: string
+    ProductId:
+      name: productId
+      in: path
+      required: true
+      description: The ID of the product
+      schema:
+        type: string
+    OrderId:
+      name: orderId
+      in: path
+      required: true
+      description: The ID of the order
+      schema:
+        type: string
+
+  schemas:
+    Client:
+      type: object
+      required:
+        - name
+        - email
+      properties:
+        id:
+          type: string
+          example: 123e4567-e89b-12d3-a456-426614174000
+        name:
+          type: string
+          example: John Doe
+        email:
+          type: string
+          format: email
+          example: john.doe@example.com
+        phone:
+          type: string
+          example: "+1-111-111-1111"
+        createdAt:
+          type: string
+          format: date-time
+          example: 2025-06-17T14:23:00Z
+    Product:
+      type: object
+      required:
+        - name
+        - price
+      properties:
+        id:
+          type: string
+          example: 60d21b4667d0d8992e610c85
+        name:
+          type: string
+          example: Coffee Mug
+        description:
+          type: string
+          example: A stylish ceramic coffee mug
+        price:
+          type: number
+          example: 14.99
+        stock:
+          type: integer
+          example: 50
+        createdAt:
+          type: string
+          format: date-time
+          example: 2025-06-17T14:23:00Z
+    Order:
+      type: object
+      required:
+        - client
+        - products
+        - totalPrice
+      properties:
+        id:
+          type: string
+          example: 60d21b4967d0d8992e610c87
+        client:
+          type: string
+          description: ID of the client
+          example: 123e4567-e89b-12d3-a456-426614174000
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              product:
+                type: string
+                example: 60d21b4667d0d8992e610c85
+              quantity:
+                type: integer
+                example: 2
+        totalPrice:
+          type: number
+          example: 26.98
+        orderDate:
+          type: string
+          format: date-time
+          example: 2025-06-17T15:30:00Z
+        status:
+          type: string
+          enum: [pending, completed, cancelled]
+          example: pending
