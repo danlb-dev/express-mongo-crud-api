@@ -1,2 +1,2 @@
 # express-crud-api-demo
-Study project with Restful Api's using Express, Node.js, and TypesScript.
+A study project demonstrating the use of Node.js, Express, and TypeScript to build a RESTful API.
