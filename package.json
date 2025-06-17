@@ -1,0 +1,29 @@
+{
+  "name": "express-crud-api-demo",
+  "version": "1.0.0",
+  "description": "A study project demonstrating the use of Node.js, Express, and TypeScript to build a RESTful API.",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "npm run build && nodemon dist/index.js --exec babel-node"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danlb-dev/express-crud-api-demo.git"
+  },
+  "dependencies": {
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.27.2",
+    "@babel/core": "^7.27.4",
+    "@babel/node": "^7.27.1",
+    "@babel/preset-env": "^7.27.2",
+    "@types/express": "^5.0.3",
+    "@types/node": "^24.0.3"
+  },
+  "types": "Express"
+}
