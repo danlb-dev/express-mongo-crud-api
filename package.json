@@ -5,7 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && nodemon dist/index.js --exec babel-node"
+    "start": "npm run build && nodemon dist/index.js --exec"
   },
   "repository": {
     "type": "git",
@@ -16,16 +16,11 @@
     "express": "^5.1.0",
     "mongoose": "^8.16.0",
     "nodemon": "^3.1.10",
-    "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",
     "typescript": "^5.8.3",
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.27.2",
-    "@babel/core": "^7.27.4",
-    "@babel/node": "^7.27.1",
-    "@babel/preset-env": "^7.27.2",
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.3",
     "@types/swagger-jsdoc": "^6.0.4",
