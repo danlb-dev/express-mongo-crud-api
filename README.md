@@ -1,8 +1,10 @@
 # express-mongo-crud-api
 
 A simple RESTful API built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.  
-This project has full CRUD support for managing Clients, Products, and Orders.
-This was designed to be consumed by frontend apps like a CRM.
+This project provides full CRUD support for managing Clients, Products, and Orders.  
+It was designed to be consumed by frontend apps like a CRM.
+
+> **Note:** This repository is a personal study/demo project intended for learning and portfolio purposes only.
 
 ---
 
@@ -12,9 +14,22 @@ This was designed to be consumed by frontend apps like a CRM.
   - Clients
   - Products
   - Orders
-- Swagger documentation
-- TypeScript + Express structured codebase
+- Swagger documentation for easy testing and onboarding
+- TypeScript + Express structured and modular codebase
 - MongoDB with Mongoose ODM
+- Centralized error handling middleware for clean and consistent error responses
+- Environment-based configuration using `.env` files
+
+---
+
+## 🚀 Tech Stack
+
+- **Node.js** (v18+)
+- **TypeScript**
+- **Express**
+- **MongoDB** with **Mongoose**
+- **Swagger** (OpenAPI) for API documentation
+- **dotenv** for environment variable management
 
 ---
 
