@@ -8,11 +8,11 @@ import {
 } from '../controllers/product.controller';
 
 const productsRouter = (app: Express) => {
-    app.route('/product')
+    app.route('/products')
     .get(getProducts)
     .post(addNewProduct);
 
-    app.route('/product/:productId')
+    app.route('/products/:productId')
     .get(getProductById)
     .put(updateProduct)
     .delete(deleteProduct);

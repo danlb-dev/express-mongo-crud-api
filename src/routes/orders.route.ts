@@ -8,11 +8,11 @@ import {
 } from '../controllers/order.controller';
 
 const ordersRouter = (app: Express) => {
-    app.route('/order')
+    app.route('/orders')
     .get(getOrders)
     .post(addNewOrder);
 
-    app.route('/order/:orderId')
+    app.route('/orders/:orderId')
     .get(getOrderById)
     .put(updateOrder)
     .delete(deleteOrder);

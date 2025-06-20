@@ -1,44 +1,46 @@
+// External dependencies
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import yaml from 'yamljs';
-
-import clientsRouter from './routes/client.route';
-import productsRouter from './routes/product.route';
-import ordersRouter from './routes/order.route';
 import bodyParser from 'body-parser';
 
+// Internal modules
+import clientsRouter from './routes/clients.route';
+import productsRouter from './routes/products.route';
+import ordersRouter from './routes/orders.route';
+
 const app: Express = express();
-const DatabaseName = "crm_dev_db";
-const PORT = 3200;
+const PORT = process.env.PORT || 3200;
+const DB_HOST = 'mongodb://localhost/';
+const DB_NAME = 'crm_dev_db';
 
-// Connecting app to MongoDB
+// Connect to MongoDB
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://localhost/${DatabaseName}`)
-        .then(() => console.log("Connected to MongoDB!"));
+mongoose.connect(`${DB_HOST}${DB_NAME}`)
+  .then(() => console.log("Connected to MongoDB!"))
+  .catch((err) => console.error("MongoDB connection error:", err));
 
-// BodyParser setup
-app.use(bodyParser.urlencoded({extended: true}));
+// Middleware
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-// Serve static files
 app.use(express.static("public"));
 
-// Serve API docs
+// Swagger documentation
 const openapiSpec = yaml.load('./openapi.yaml');
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(openapiSpec));
 
-// Adding routers
-app.use('/clients', clientsRouter);
-app.use('/products', productsRouter);
-app.use('/orders', ordersRouter);
+// Route registration
+clientsRouter(app);
+productsRouter(app);
+ordersRouter(app);
 
-// Redirecting root to swagger
+// Redirect root to Swagger UI
 app.get("/", (req: Request, res: Response) => {
     res.redirect('/swagger');
 });
 
-// Starting server
+// Start server
 app.listen(PORT, () => {
     console.log(`Server is running at http://localhost:${PORT}`);
 });

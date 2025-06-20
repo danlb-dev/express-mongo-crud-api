@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
+const Model = mongoose.model;
 
 export const ProductSchema = new Schema({
   name: {
@@ -23,3 +24,5 @@ export const ProductSchema = new Schema({
     default: Date.now,
   },
 });
+
+export const Product = Model("Product", ProductSchema);

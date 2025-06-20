@@ -8,11 +8,11 @@ import {
 } from '../controllers/client.controller';
 
 const clientsRouter = (app: Express) => {
-    app.route('/client')
+    app.route('/clients')
     .get(getClients)
     .post(addNewClient);
 
-    app.route('/client/:clientId')
+    app.route('/clients/:clientId')
     .get(getClientById)
     .put(updateClient)
     .delete(deleteClient);
