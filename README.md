@@ -4,7 +4,7 @@ A simple RESTful API built with **Node.js**, **Express**, **TypeScript**, and **
 This project provides full CRUD support for managing Clients, Products, and Orders.  
 It was designed to be consumed by frontend apps like a CRM.
 
-> **Note:** This repository is a personal study/demo project intended for learning and portfolio purposes only.
+> **Note:** This repository is a personal study and demonstration project, created solely for my learning and portfolio purposes.
 
 ---
 
