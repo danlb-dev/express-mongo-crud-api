@@ -1,12 +1,10 @@
-// External dependencies
 import express, { Express, Request, Response } from 'express';
 import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import yaml from 'yamljs';
 import bodyParser from 'body-parser';
 import config from './config/config';
-
-// Internal modules
+import customErrorHandler from './middleware/errorHandler';
 import clientsRouter from './routes/clients.route';
 import productsRouter from './routes/products.route';
 import ordersRouter from './routes/orders.route';
@@ -27,21 +25,28 @@ mongoose.connect(`${DB_HOST}${DB_NAME}`)
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
 
-// Swagger documentation
+// Swagger
 const openapiSpec = yaml.load('./openapi.yaml');
 app.use('/swagger', swaggerUi.serve, swaggerUi.setup(openapiSpec));
 
-// Route registration
+// Routes
 clientsRouter(app);
 productsRouter(app);
 ordersRouter(app);
 
-// Redirect root to Swagger UI
+// Redirect Root to Swagger
 app.get("/", (req: Request, res: Response) => {
     res.redirect('/swagger');
 });
+
+// Handle Unknown Routes
+app.use((req: Request, res: Response) => {
+    res.status(404).json({ error: "Route not found" });
+});
+
+// Error Handler
+app.use(customErrorHandler);
 
 // Start server
 app.listen(PORT, () => {
