@@ -4,16 +4,19 @@ import mongoose from 'mongoose';
 import swaggerUi from 'swagger-ui-express';
 import yaml from 'yamljs';
 import bodyParser from 'body-parser';
+import config from './config/config';
 
 // Internal modules
 import clientsRouter from './routes/clients.route';
 import productsRouter from './routes/products.route';
 import ordersRouter from './routes/orders.route';
 
+const HOST = config.host;
+const PORT = config.port;
+const DB_HOST = config.db_host;
+const DB_NAME = config.db_name;
+
 const app: Express = express();
-const PORT = process.env.PORT || 3200;
-const DB_HOST = 'mongodb://localhost/';
-const DB_NAME = 'crm_dev_db';
 
 // Connect to MongoDB
 mongoose.Promise = global.Promise;
@@ -42,5 +45,5 @@ app.get("/", (req: Request, res: Response) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`Server is running at http://localhost:${PORT}`);
+    console.log(`Server is running at http://${HOST}:${PORT}`);
 });

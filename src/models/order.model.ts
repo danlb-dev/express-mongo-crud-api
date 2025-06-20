@@ -4,7 +4,7 @@ import { Product } from "./product.model";
 
 const Schema = mongoose.Schema;
 
-export const OrderSchema = new Schema({
+const OrderSchema = new Schema({
   client: {
     type: mongoose.Schema.Types.ObjectId,
     ref: Client.modelName,
@@ -48,3 +48,5 @@ export const OrderSchema = new Schema({
     default: "pending",
   },
 });
+
+export default OrderSchema;
