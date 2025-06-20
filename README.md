@@ -1,4 +1,4 @@
-# express-crud-api-demo
+# express-mongo-crud-api
 
 A simple RESTful API built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.  
 This project has full CRUD support for managing Clients, Products, and Orders.
@@ -28,8 +28,8 @@ This was designed to be consumed by frontend apps like a CRM.
 ### Installation
 
 ```bash
-git clone https://github.com/danlb-dev/express-crud-api-demo.git
-cd express-crud-api-demo
+git clone https://github.com/danlb-dev/express-mongo-crud-api.git
+cd express-mongo-crud-api
 npm install
 npm run start
 ```

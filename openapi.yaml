@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: express-crud-api-demo
+  title: express-mongo-crud-api
   version: 1.0.0
   description: A study project demonstrating the use of Node.js, Express, and TypeScript to build a RESTful API
 

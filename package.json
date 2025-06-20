@@ -1,5 +1,5 @@
 {
-  "name": "express-crud-api-demo",
+  "name": "express-mongo-crud-api",
   "version": "1.0.0",
   "description": "A study project demonstrating the use of Node.js, Express, and TypeScript to build a RESTful API.",
   "main": "src/index.ts",
