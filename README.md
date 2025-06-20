@@ -1,7 +1,7 @@
 # express-crud-api-demo
 
 A simple RESTful API built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.  
-This project demonstrates backend concepts for a potential CRM microservice — with full CRUD support for Clients, Products, and Orders.
+This project has full CRUD support for managing Clients, Products, and Orders.
 
 ---
 
@@ -11,7 +11,7 @@ This project demonstrates backend concepts for a potential CRM microservice — 
   - Clients
   - Products
   - Orders
-- Swagger documentation (`/`)
+- Swagger documentation
 - TypeScript + Express structured codebase
 - MongoDB with Mongoose ODM
 
@@ -27,7 +27,7 @@ This project demonstrates backend concepts for a potential CRM microservice — 
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/express-crud-api-demo.git
+git clone https://github.com/danlb-dev/express-crud-api-demo.git
 cd express-crud-api-demo
 npm install
 npm run start
