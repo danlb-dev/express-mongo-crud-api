@@ -3,7 +3,7 @@ dotenv.config();
 
 //keeping same as 'dev' for now.
 const prodConfig = {
-  port: process.env.PORT || 3000,
+  port: process.env.PORT || 3200,
   host: process.env.HOST || 'localhost',
   db_host: process.env.DB_HOST || 'mongodb://localhost/',
   db_name: process.env.DB_NAME || 'crm_dev_db',

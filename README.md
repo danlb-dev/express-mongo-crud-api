@@ -2,10 +2,11 @@
 
 A simple RESTful API built with **Node.js**, **Express**, **TypeScript**, and **MongoDB**.  
 This project has full CRUD support for managing Clients, Products, and Orders.
+This was designed to be consumed by frontend apps like a CRM.
 
 ---
 
-## 🔧 Features
+## Features
 
 - CRUD operations for:
   - Clients
