@@ -5,14 +5,14 @@ import {
     getClientById, 
     updateClient, 
     deleteClient 
-} from '../controllers/client.controller';
+} from '../controllers/v1/client.controller';
 
 const clientsRouter = (app: Express) => {
-    app.route('/clients')
+    app.route('/api/v1/clients')
     .get(getClients)
     .post(addNewClient);
 
-    app.route('/clients/:clientId')
+    app.route('/api/v1/clients/:clientId')
     .get(getClientById)
     .put(updateClient)
     .delete(deleteClient);

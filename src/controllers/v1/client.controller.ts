@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ClientSchema } from "../models/client.model";
+import { ClientSchema } from "../../models/client.model";
 import { Request, Response } from 'express';
 
 const Client = mongoose.model('Client', ClientSchema);

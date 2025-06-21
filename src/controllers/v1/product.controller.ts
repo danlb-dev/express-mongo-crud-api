@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { ProductSchema } from "../models/product.model";
+import { ProductSchema } from "../../models/product.model";
 import { Request, Response } from 'express';
 
 const Product = mongoose.model('Product', ProductSchema);

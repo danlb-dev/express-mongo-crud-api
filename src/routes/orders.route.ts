@@ -5,14 +5,14 @@ import {
     getOrderById, 
     updateOrder, 
     deleteOrder
-} from '../controllers/order.controller';
+} from '../controllers/v1/order.controller';
 
 const ordersRouter = (app: Express) => {
-    app.route('/orders')
+    app.route('/api/v1/orders')
     .get(getOrders)
     .post(addNewOrder);
 
-    app.route('/orders/:orderId')
+    app.route('/api/v1/orders/:orderId')
     .get(getOrderById)
     .put(updateOrder)
     .delete(deleteOrder);

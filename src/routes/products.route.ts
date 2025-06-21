@@ -5,14 +5,14 @@ import {
     getProductById, 
     updateProduct, 
     deleteProduct
-} from '../controllers/product.controller';
+} from '../controllers/v1/product.controller';
 
 const productsRouter = (app: Express) => {
-    app.route('/products')
+    app.route('/api/v1/products')
     .get(getProducts)
     .post(addNewProduct);
 
-    app.route('/products/:productId')
+    app.route('/api/v1/products/:productId')
     .get(getProductById)
     .put(updateProduct)
     .delete(deleteProduct);

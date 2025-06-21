@@ -13,7 +13,7 @@ tags:
   - name: Orders
 
 paths:
-  /clients:
+  /api/v1/clients:
     get:
       summary: Retrieve all clients
       tags: [Clients]
@@ -40,7 +40,7 @@ paths:
         201:
           description: Client successfully created
 
-  /clients/{clientId}:
+  /api/v1/clients/{clientId}:
     get:
       summary: Retrieve a specific client
       tags: [Clients]
@@ -78,7 +78,7 @@ paths:
         204:
           description: Client successfully deleted
 
-  /products:
+  /api/v1/products:
     get:
       summary: Retrieve all products
       tags: [Products]
@@ -104,7 +104,7 @@ paths:
         201:
           description: Product successfully created
 
-  /products/{productId}:
+  /api/v1/products/{productId}:
     get:
       summary: Get a specific product
       tags: [Products]
@@ -140,7 +140,7 @@ paths:
         204:
           description: Product deleted
 
-  /orders:
+  /api/v1/orders:
     get:
       summary: Retrieve all orders
       tags: [Orders]
@@ -166,7 +166,7 @@ paths:
         201:
           description: Order created
 
-  /orders/{orderId}:
+  /api/v1/orders/{orderId}:
     get:
       summary: Get a specific order
       tags: [Orders]

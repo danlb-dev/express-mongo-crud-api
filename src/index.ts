@@ -26,9 +26,24 @@ mongoose.connect(`${DB_HOST}${DB_NAME}`)
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// Swagger
-const openapiSpec = yaml.load('./openapi.yaml');
-app.use('/swagger', swaggerUi.serve, swaggerUi.setup(openapiSpec));
+// Serve static Yaml files
+app.use(express.static("swagger"));
+
+//Swagger with API versioning
+app.use(
+  '/swagger',
+  swaggerUi.serve,
+  swaggerUi.setup(undefined, {
+    explorer: true,
+    swaggerOptions: {
+      urls: [
+        { url: '/openapi_v1.yaml', name: 'API v1' },
+        // Add other versions as needed
+        // { url: '/openapi_v2.yaml', name: 'API v2' }
+      ]
+    }
+  })
+);
 
 // Routes
 clientsRouter(app);
